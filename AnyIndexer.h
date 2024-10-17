@@ -10,6 +10,7 @@ struct AnyIndexer {
 	size_t P = 0;
 
 	bool (*EQr)(const char*, const char*, size_t);
+	int (*Comp)(const char*, const char*, size_t);
 };
 
 template<class T> AnyIndexer ConstructAny(T& In);

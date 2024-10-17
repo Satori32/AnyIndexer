@@ -1,3 +1,4 @@
+/** /
 #include <stdio.h>
 #include <memory.h>
 
@@ -73,6 +74,9 @@ bool NotEQ(AnyIndexer& In, AnyIndexer& X) {
 	return !In.EQr((char*)Index(In.T,0), (char*)Index(X.T,0), Size(In.T));
 
 }
+/**/
+
+#include "AnyIndexer.h"
 int main() {
 	AnyIndexer A = ConstructAny<int>(10);
 	Free(A);
