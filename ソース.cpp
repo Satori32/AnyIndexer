@@ -51,6 +51,14 @@ bool EQ(AnyIndexer& In, const T& X) {
 	return In.EQr((char*)Y,(char*)&X,sizeof(T));
 
 }
+
+bool EQ(AnyIndexer& In, AnyIndexer& X) {
+	if (Index(In.T, 0) == NULL) { return NULL; }
+	if (Index(X.T, 0) == NULL) { return NULL; }
+
+	return In.EQr((char*)Index(In.T,0), (char*)Index(X.T,0), Size(In.T));
+
+}
 template<class T>
 bool NotEQ(AnyIndexer& In,const T& X) {
 	if (Index(In.T, 0) == NULL) { return NULL; }
@@ -58,7 +66,13 @@ bool NotEQ(AnyIndexer& In,const T& X) {
 
 	return !In.EQr((char*)Y,(char*)&X,sizeof(T));
 }
+bool EQ(AnyIndexer& In, AnyIndexer& X) {
+	if (Index(In.T, 0) == NULL) { return NULL; }
+	if (Index(X.T, 0) == NULL) { return NULL; }
 
+	return !In.EQr((char*)Index(In.T,0), (char*)Index(X.T,0), Size(In.T));
+
+}
 int main() {
 	AnyIndexer A = ConstructAny<int>(10);
 	Free(A);
